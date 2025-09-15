@@ -1,267 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO メタタグ -->
-    <title>株式会社Nuts | Webコンサルタント・ホームページ制作</title>
-    <meta name="description" content="株式会社Nutsは、Web販促コンサルティングとホームページ制作を通じて、お客様のビジネス成長をサポートいたします。">
-    <meta name="keywords" content="Webコンサルタント,ホームページ制作,Web販促,マーケティング,東京">
-    
-    <!-- OGP -->
-    <meta property="og:title" content="株式会社Nuts | Webコンサルタント・ホームページ制作">
-    <meta property="og:description" content="Web販促コンサルティングとホームページ制作を通じて、お客様のビジネス成長をサポートいたします。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-username.github.io/nuts-corporate/">
-    <meta property="og:image" content="https://your-username.github.io/nuts-corporate/assets/img/og-image.jpg">
-    <meta property="og:site_name" content="株式会社Nuts">
-    <meta property="og:locale" content="ja_JP">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="株式会社Nuts | Webコンサルタント・ホームページ制作">
-    <meta name="twitter:description" content="Web販促コンサルティングとホームページ制作を通じて、お客様のビジネス成長をサポートいたします。">
-    <meta name="twitter:image" content="https://your-username.github.io/nuts-corporate/assets/img/og-image.jpg">
-    
-    <!-- JSON-LD 構造化データ -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "株式会社Nuts",
-        "url": "https://your-username.github.io/nuts-corporate/",
-        "description": "Webコンサルタント・ホームページ制作",
-        "foundingDate": "2024",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "営業",
-            "availableLanguage": "Japanese"
-        },
-        "sameAs": []
-    }
-    </script>
-    
-    <!-- Breadcrumb JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "ホーム",
-                "item": "https://your-username.github.io/nuts-corporate/"
-            }
-        ]
-    }
-    </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌰</text></svg>">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>株式会社Nuts | Webコンサルタント・ホームページ制作</title>
+  <meta name="description" content="Webを活用したビジネス成長のためのトータルサポート。Web販促コンサルティング／ホームページ制作。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- 任意のWebフォントを使う場合は以下を有効化
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet" />
+  -->
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-    <!-- ヘッダー -->
-    <header class="header" role="banner">
-        <div class="container">
-            <div class="header-content">
-                <!-- ロゴ（テキスト） -->
-                <div class="logo">
-                    <a href="index.html" class="logo-link">
-                        <span class="logo-text">株式会社Nuts</span>
-                        <span class="logo-subtitle">Webコンサルタント</span>
-                    </a>
-                </div>
-                
-                <!-- モバイルメニューボタン -->
-                <button class="mobile-menu-btn" aria-label="メニューを開く" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-                
-                <!-- ナビゲーション -->
-                <nav class="nav" role="navigation">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link active" aria-current="page">ホーム</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="about.html" class="nav-link">会社情報</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="services.html" class="nav-link">事業内容</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">お問い合わせ</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+  <a class="skip" href="#main">本文へスキップ</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="主要ナビゲーション">
+      <div class="brand">株式会社Nuts</div>
+      <nav class="nav-links">
+        <a href="#services">サービス</a>
+        <a href="#features">Nutsの特徴</a>
+        <a href="#contact">ご相談</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="reveal h-underline">Webを活用したビジネス成長のためのトータルサポート</h1>
+        <p class="reveal" data-delay="80">理論に留まらず、成果につながる実践的な施策で継続的な成長を後押しします。</p>
+        <div class="actions">
+          <a class="btn reveal" href="#contact" data-delay="160">まずはご相談</a>
+          <a class="btn alt reveal" href="#services" data-delay="200">サービスを見る</a>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- メイン -->
-    <main role="main">
-        <!-- ヒーローセクション -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 id="hero-title" class="hero-title">
-                            あなたのビジネスを<br>
-                            <span class="text-accent">Webで成長</span>させませんか？
-                        </h1>
-                        <p class="hero-description">
-                            株式会社Nutsは、Web販促コンサルティングとホームページ制作を通じて、<br>
-                            お客様のビジネス成長をサポートいたします。
-                        </p>
-                        <div class="hero-actions">
-                            <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
-                            <a href="services.html" class="btn btn-secondary">事業内容を見る</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <!-- レスポンシブ画像のプレースホルダ -->
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="assets/img/hero-desktop.jpg">
-                            <source media="(min-width: 480px)" srcset="assets/img/hero-tablet.jpg">
-                            <img src="assets/img/hero-mobile.jpg" alt="パソコンを使って作業する人の手元。Web制作やマーケティングのイメージ" class="hero-img">
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- サービス概要 -->
-        <section class="services-preview" aria-labelledby="services-title">
-            <div class="container">
-                <h2 id="services-title" class="section-title">私たちのサービス</h2>
-                <p class="section-description">
-                    Webを活用したビジネス成長のためのトータルサポート
-                </p>
-                
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <picture>
-                                <img src="assets/img/service-consulting.jpg" alt="グラフと資料を使ったコンサルティングのイメージ" class="service-img">
-                            </picture>
-                        </div>
-                        <h3 class="service-title">Web販促コンサルティング</h3>
-                        <p class="service-description">
-                            お客様のビジネスを深く理解し、最適なWeb戦略をご提案。効果的な販促活動をサポートします。
-                        </p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <picture>
-                                <img src="assets/img/service-website.jpg" alt="レスポンシブなWebサイトのデザインイメージ" class="service-img">
-                            </picture>
-                        </div>
-                        <h3 class="service-title">ホームページ制作</h3>
-                        <p class="service-description">
-                            使いやすく、成果につながるホームページを制作。お客様のブランドを効果的に表現します。
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="text-center">
-                    <a href="services.html" class="btn btn-outline">詳しく見る</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 特徴 -->
-        <section class="features" aria-labelledby="features-title">
-            <div class="container">
-                <h2 id="features-title" class="section-title">株式会社Nutsの特徴</h2>
-                
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-number">01</div>
-                        <h3 class="feature-title">お客様に寄り添う姿勢</h3>
-                        <p class="feature-description">
-                            一人ひとりのお客様とじっくり向き合い、ビジネスの課題と目標を共有。最適な解決策をともに見つけます。
-                        </p>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-number">02</div>
-                        <h3 class="feature-title">実践的なアプローチ</h3>
-                        <p class="feature-description">
-                            理論だけでなく、実際の成果につながる施策をご提案。継続的なサポートで着実な成長を実現します。
-                        </p>
-                    </div>
-                    
-                    <div class="feature-item">
-                        <div class="feature-number">03</div>
-                        <h3 class="feature-title">分かりやすい説明</h3>
-                        <p class="feature-description">
-                            専門用語を使わず、誰にでも理解しやすい言葉でご説明。安心してお任せいただけます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta" aria-labelledby="cta-title">
-            <div class="container">
-                <div class="cta-content">
-                    <h2 id="cta-title" class="cta-title">
-                        まずはお気軽に<br>ご相談ください
-                    </h2>
-                    <p class="cta-description">
-                        お客様のビジネスについて詳しくお聞かせください。<br>
-                        最適なWeb戦略をご提案いたします。
-                    </p>
-                    <a href="contact.html" class="btn btn-primary btn-large">無料相談のお申し込み</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- フッター -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <div class="footer-logo">
-                        <span class="logo-text">株式会社Nuts</span>
-                    </div>
-                    <p class="footer-description">
-                        Webコンサルタント・ホームページ制作
-                    </p>
-                </div>
-                
-                <nav class="footer-nav">
-                    <ul class="footer-nav-list">
-                        <li><a href="index.html" class="footer-nav-link">ホーム</a></li>
-                        <li><a href="about.html" class="footer-nav-link">会社情報</a></li>
-                        <li><a href="services.html" class="footer-nav-link">事業内容</a></li>
-                        <li><a href="contact.html" class="footer-nav-link">お問い合わせ</a></li>
-                    </ul>
-                </nav>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">© 2024 株式会社Nuts. All rights reserved.</p>
-            </div>
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title reveal h-underline">私たちのサービス</h2>
+        <p class="section-lead reveal">Webを活用した販促と制作をワンストップで支援します。</p>
+        <div class="cards stagger-group">
+          <article class="card reveal">
+            <h3>Web販促コンサルティング</h3>
+            <p>ビジネスと顧客理解に基づいた最適なWeb戦略をご提案し、効果的な販促活動を実行します。</p>
+          </article>
+          <article class="card reveal">
+            <h3>ホームページ制作</h3>
+            <p>使いやすく、成果につながるサイトを制作し、ブランドを的確に表現します。</p>
+          </article>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <!-- Features -->
+    <section id="features" class="section alt">
+      <div class="container">
+        <h2 class="section-title reveal h-underline">株式会社Nutsの特徴</h2>
+        <div class="features">
+          <div class="feature reveal slide-l">
+            <div class="feat-num countup" data-target="1">01</div>
+            <div class="feat-body">
+              <h3>お客様に寄り添う姿勢</h3>
+              <p>課題と目標を共有し、最適な解決策をともに見つけます。</p>
+            </div>
+          </div>
+          <div class="feature reveal slide-r">
+            <div class="feat-num countup" data-target="2">02</div>
+            <div class="feat-body">
+              <h3>実践的なアプローチ</h3>
+              <p>実際の成果につながる施策をご提案し、継続的なサポートで成長を実現します。</p>
+            </div>
+          </div>
+          <div class="feature reveal slide-l">
+            <div class="feat-num countup" data-target="3">03</div>
+            <div class="feat-body">
+              <h3>分かりやすい説明</h3>
+              <p>専門用語を避け、誰にでも理解しやすい言葉でご説明します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="section cta">
+      <div class="container">
+        <h2 class="section-title reveal h-underline">まずはお気軽にご相談ください</h2>
+        <p class="reveal">ビジネスについて詳しくお聞かせください。最適なWeb戦略をご提案します。</p>
+        <a class="btn reveal" href="mailto:info@example.com">メールで問い合わせる</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> 株式会社Nuts</small>
+    </div>
+  </footer>
+
+  <script src="./main.js" defer></script>
 </body>
 </html>
