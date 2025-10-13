@@ -49,20 +49,670 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌰</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fefdfb;
+            color: #2d2d2d;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(180deg, #fef8f0 0%, #f5f9f0 50%, #fffef8 100%);
+        }
+
+        .bg-gradient {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(212, 163, 115, 0.08), transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(139, 195, 74, 0.08), transparent 50%),
+                        radial-gradient(circle at 50% 80%, rgba(255, 152, 0, 0.06), transparent 50%);
+            animation: gradient-shift 20s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-5%, 5%) rotate(180deg); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #d4a373, #8d6e63);
+            border-radius: 0 50% 50% 50%;
+            top: 15%;
+            left: 10%;
+            transform: rotate(-45deg);
+        }
+
+        .shape:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #8bc34a, #558b2f);
+            border-radius: 0 50% 50% 50%;
+            top: 60%;
+            right: 15%;
+            animation-delay: 8s;
+            transform: rotate(135deg);
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #ff9800, #ef6c00);
+            border-radius: 0 50% 50% 50%;
+            bottom: 25%;
+            left: 50%;
+            animation-delay: 15s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+            25% { transform: translateY(-30px) rotate(90deg); opacity: 0.2; }
+            50% { transform: translateY(-50px) rotate(180deg); opacity: 0.25; }
+            75% { transform: translateY(-30px) rotate(270deg); opacity: 0.2; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(254, 253, 251, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 195, 74, 0.15);
+            transition: all 0.3s;
+            box-shadow: 0 2px 20px rgba(139, 195, 74, 0.08);
+        }
+
+        .header.scrolled {
+            padding: 12px 0;
+            background: rgba(254, 253, 251, 0.98);
+            box-shadow: 0 5px 30px rgba(139, 195, 74, 0.12);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d4a373, #8bc34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo-text::after {
+            content: '🌱';
+            position: absolute;
+            top: -8px;
+            right: -25px;
+            font-size: 20px;
+            animation: sproutBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes sproutBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            color: #7d6e5d;
+            font-weight: 400;
+            margin-top: -5px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(135deg, #d4a373, #8bc34a);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #5d4e42;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #8bc34a, #d4a373);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 100px 0 20px;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            font-size: 14px;
+            color: #7d6e5d;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: '›';
+            margin-left: 10px;
+            color: #aaa;
+        }
+
+        .breadcrumb-item a {
+            color: #8bc34a;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb-item a:hover {
+            opacity: 0.7;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #8bc34a, #d4a373, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-description {
+            font-size: 18px;
+            color: #6d6d6d;
+        }
+
+        /* Section */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8bc34a, #d4a373, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Form Wrapper */
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .form-intro {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .form-description {
+            font-size: 15px;
+            color: #5d5d5d;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .contact-img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(139, 195, 74, 0.15);
+            border: 3px solid rgba(139, 195, 74, 0.15);
+        }
+
+        /* Form */
+        .contact-form-element {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(139, 195, 74, 0.12);
+            border: 2px solid rgba(139, 195, 74, 0.1);
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d2d2d;
+            font-size: 15px;
+        }
+
+        .required {
+            color: #8bc34a;
+            font-weight: 700;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(139, 195, 74, 0.2);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: #fafaf8;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #8bc34a;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(139, 195, 74, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-help {
+            font-size: 13px;
+            color: #999;
+            margin-top: 6px;
+        }
+
+        .error-message {
+            font-size: 13px;
+            color: #ff4057;
+            margin-top: 6px;
+            display: none;
+        }
+
+        /* Checkbox */
+        .form-privacy {
+            margin: 40px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-mark {
+            min-width: 24px;
+            height: 24px;
+            border: 2px solid rgba(139, 195, 74, 0.3);
+            border-radius: 6px;
+            background: #fafaf8;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .checkbox-mark::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-input:checked ~ .checkbox-mark {
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            border-color: #8bc34a;
+        }
+
+        .checkbox-input:checked ~ .checkbox-mark::after {
+            display: block;
+        }
+
+        .checkbox-text {
+            font-size: 14px;
+            color: #5d5d5d;
+            line-height: 1.6;
+        }
+
+        .privacy-link {
+            color: #8bc34a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .form-submit {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 60px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(139, 195, 74, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 195, 74, 0.5);
+        }
+
+        .btn-large {
+            padding: 18px 60px;
+            font-size: 18px;
+        }
+
+        /* Privacy Policy */
+        .privacy-policy {
+            background: linear-gradient(135deg, rgba(139, 195, 74, 0.08), rgba(212, 163, 115, 0.08));
+            border-radius: 30px;
+            padding: 60px;
+            margin: 0 20px;
+        }
+
+        .privacy-content {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .privacy-text {
+            font-size: 15px;
+            color: #5d5d5d;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .privacy-list {
+            font-size: 15px;
+            color: #5d5d5d;
+            line-height: 1.9;
+            margin: 20px 0 20px 30px;
+        }
+
+        .privacy-list li {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(139, 195, 74, 0.15);
+            background: linear-gradient(180deg, transparent, rgba(139, 195, 74, 0.03));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 28px;
+        }
+
+        .footer-description {
+            color: #7d6e5d;
+            margin-top: 10px;
+        }
+
+        .footer-nav-list {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav-link {
+            color: #7d6e5d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav-link:hover {
+            color: #8bc34a;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(139, 195, 74, 0.1);
+        }
+
+        .copyright {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(254, 253, 251, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                box-shadow: 0 10px 30px rgba(139, 195, 74, 0.15);
+            }
+
+            .nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .form-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .form-intro {
+                position: static;
+            }
+
+            .contact-form-element {
+                padding: 30px 25px;
+            }
+
+            .privacy-policy {
+                padding: 40px 25px;
+                margin: 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- ヘッダー -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
     <header class="header" role="banner">
         <div class="container">
             <div class="header-content">
-                <!-- ロゴ（テキスト） -->
                 <div class="logo">
                     <a href="index.html" class="logo-link">
                         <span class="logo-text">Nuts</span>
@@ -70,14 +720,12 @@
                     </a>
                 </div>
                 
-                <!-- モバイルメニューボタン -->
                 <button class="mobile-menu-btn" aria-label="メニューを開く" aria-expanded="false">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
                 
-                <!-- ナビゲーション -->
                 <nav class="nav" role="navigation">
                     <ul class="nav-list">
                         <li class="nav-item">
@@ -98,9 +746,7 @@
         </div>
     </header>
 
-    <!-- メイン -->
     <main role="main">
-        <!-- パンくずナビ -->
         <nav class="breadcrumb" aria-label="現在位置">
             <div class="container">
                 <ol class="breadcrumb-list">
@@ -114,7 +760,6 @@
             </div>
         </nav>
 
-        <!-- ページヘッダー -->
         <section class="page-header" aria-labelledby="page-title">
             <div class="container">
                 <h1 id="page-title" class="page-title">お問い合わせ</h1>
@@ -124,7 +769,6 @@
             </div>
         </section>
 
-        <!-- お問い合わせフォーム -->
         <section class="contact-form" aria-labelledby="form-title">
             <div class="container">
                 <div class="form-wrapper">
@@ -142,15 +786,7 @@
                         </div>
                     </div>
                     
-                    <!-- 
-                        フォームの設定について:
-                        1. 簡易版（mailto）: そのまま使用
-                        2. Formspree版: action属性を以下に変更
-                           action="https://formspree.io/f/{YOUR_FORM_ID}"
-                           method="POST"
-                    -->
                     <form class="contact-form-element" action="mailto:yuto.hr.63@gmail.com" method="post" enctype="text/plain" novalidate>
-                        <!-- ハニーポット（スパム対策） -->
                         <div class="honeypot" aria-hidden="true">
                             <label for="website">ウェブサイト（入力しないでください）</label>
                             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -262,7 +898,6 @@
             </div>
         </section>
 
-        <!-- プライバシーポリシー -->
         <section class="privacy-policy" id="privacy-policy" aria-labelledby="privacy-title">
             <div class="container">
                 <h2 id="privacy-title" class="section-title">プライバシーポリシー</h2>
@@ -283,10 +918,53 @@
         </section>
     </main>
 
-    <!-- フッター -->
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <span
+                        <span class="logo-text">Nuts</span>
+                    </div>
+                    <p class="footer-description">
+                        Webコンサルタント・ホームページ制作
+                    </p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html" class="footer-nav-link">ホーム</a></li>
+                        <li><a href="about.html" class="footer-nav-link">サービス情報</a></li>
+                        <li><a href="services.html" class="footer-nav-link">事業内容</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Nuts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('.nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            const isExpanded = nav.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            mobileMenuBtn.setAttribute('aria-label', isExpanded ? 'メニューを閉じる' : 'メニューを開く');
+        });
+    </script>
+</body>
+</html>
