@@ -790,3 +790,128 @@
         <section class="company-philosophy" aria-labelledby="philosophy-title">
             <div class="container">
                 <h2 id="philosophy-title" class="section-title">サービス理念</h2>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <picture>
+                                <img src="../assets/img/philosophy-trust.jpg" alt="握手をする人々のイメージ。信頼関係を表現" class="philosophy-img">
+                            </picture>
+                        </div>
+                        <h3 class="philosophy-title">信頼</h3>
+                        <p class="philosophy-description">
+                            お客様との信頼関係を何よりも大切にし、誠実で透明性のあるサービスを提供します。
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <picture>
+                                <img src="../assets/img/philosophy-growth.jpg" alt="上向きの矢印と植物の成長のイメージ" class="philosophy-img">
+                            </picture>
+                        </div>
+                        <h3 class="philosophy-title">成長</h3>
+                        <p class="philosophy-description">
+                            お客様とともに学び、成長し続けることで、より良いサービスを追求していきます。
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <picture>
+                                <img src="../assets/img/philosophy-simplicity.jpg" alt="シンプルで整理されたデスク環境のイメージ" class="philosophy-img">
+                            </picture>
+                        </div>
+                        <h3 class="philosophy-title">シンプル</h3>
+                        <p class="philosophy-description">
+                            複雑なことを分かりやすく、シンプルで使いやすいソリューションを提供します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 id="cta-title" class="cta-title">
+                        お気軽にご相談ください
+                    </h2>
+                    <p class="cta-description">
+                        ご質問やご相談がございましたら、<br>
+                        いつでもお声がけください。
+                    </p>
+                    <a href="../contact/" class="btn btn-primary btn-large">お問い合わせ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <span class="logo-text">Nuts</span>
+                    </div>
+                    <p class="footer-description">
+                        Webコンサルタント・ホームページ制作
+                    </p>
+                </div>
+                
+                <nav class="footer-nav">
+                    <ul class="footer-nav-list">
+                        <li><a href="../" class="footer-nav-link">ホーム</a></li>
+                        <li><a href="../about/" class="footer-nav-link">サービス情報</a></li>
+                        <li><a href="../services/" class="footer-nav-link">事業内容</a></li>
+                        <li><a href="../contact/" class="footer-nav-link">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Nuts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('.nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            const isExpanded = nav.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            mobileMenuBtn.setAttribute('aria-label', isExpanded ? 'メニューを閉じる' : 'メニューを開く');
+        });
+
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.philosophy-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.15}s`;
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
