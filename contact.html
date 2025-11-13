@@ -13,8 +13,8 @@
     <meta property="og:title" content="お問い合わせ | Nuts">
     <meta property="og:description" content="Web販促コンサルティング・ホームページ制作のご相談を承ります。お気軽にお問い合わせください。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-username.github.io/nuts-corporate/contact.html">
-    <meta property="og:image" content="https://your-username.github.io/nuts-corporate/assets/img/og-image.jpg">
+    <meta property="og:url" content="https://yutoumeda.github.io/nuts-corporate/contact.html">
+    <meta property="og:image" content="https://yutoumeda.github.io/nuts-corporate/assets/img/og-image.jpg">
     <meta property="og:site_name" content="Nuts">
     <meta property="og:locale" content="ja_JP">
     
@@ -180,39 +180,21 @@
         .logo-link {
             text-decoration: none;
             display: flex;
-            flex-direction: column;
+            align-items: center;
         }
 
-        .logo-text {
-            font-size: 32px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #d4a373, #8bc34a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-            position: relative;
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        .logo-text::after {
-            content: '🌱';
-            position: absolute;
-            top: -8px;
-            right: -25px;
-            font-size: 20px;
-            animation: sproutBounce 2s ease-in-out infinite;
+        .logo-img:hover {
+            transform: scale(1.05);
         }
 
-        @keyframes sproutBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .logo-subtitle {
-            font-size: 12px;
-            color: #7d6e5d;
-            font-weight: 400;
-            margin-top: -5px;
+        .header.scrolled .logo-img {
+            height: 50px;
         }
 
         .mobile-menu-btn {
@@ -607,8 +589,14 @@
             margin-bottom: 40px;
         }
 
-        .footer-logo .logo-text {
-            font-size: 28px;
+        .footer-logo-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
         }
 
         .footer-description {
@@ -675,6 +663,14 @@
                 align-items: flex-start;
             }
 
+            .logo-img {
+                height: 50px;
+            }
+
+            .header.scrolled .logo-img {
+                height: 45px;
+            }
+
             .form-wrapper {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -697,6 +693,10 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
+            .footer-logo-img {
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -715,8 +715,7 @@
             <div class="header-content">
                 <div class="logo">
                     <a href="index.html" class="logo-link">
-                        <span class="logo-text">Nuts</span>
-                        <span class="logo-subtitle">Webコンサルタント</span>
+                        <img src="https://i.postimg.cc/76VjVp6s/nuts-logo.png" alt="Nuts Webコンサルタント" class="logo-img">
                     </a>
                 </div>
                 
@@ -923,7 +922,9 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <span class="logo-text">Nuts</span>
+                        <a href="index.html" class="footer-logo-link">
+                            <img src="https://i.postimg.cc/76VjVp6s/nuts-logo.png" alt="Nuts Webコンサルタント" class="footer-logo-img">
+                        </a>
                     </div>
                     <p class="footer-description">
                         Webコンサルタント・ホームページ制作
